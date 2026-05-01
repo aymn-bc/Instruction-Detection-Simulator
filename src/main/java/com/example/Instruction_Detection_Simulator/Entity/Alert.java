@@ -27,6 +27,6 @@ public class Alert implements Serializable {
     @Enumerated(EnumType.STRING)
     private AlertStatus status;
 
-    @OneToMany
+    @OneToMany(mappedBy = "alert")
     private ArrayList<DetectionRule> detectionRule = new ArrayList<>();
 }

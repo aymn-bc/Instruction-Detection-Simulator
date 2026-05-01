@@ -26,6 +26,6 @@ public class NetworkNode implements Serializable {
     private NodeStatus status;
     private Boolean isBlacklisted;
 
-    @OneToMany
+    @OneToMany(mappedBy = "networkNode")
     private ArrayList<TrafficLog> trafficLogs = new ArrayList<>();
 }

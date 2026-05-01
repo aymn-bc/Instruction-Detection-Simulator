@@ -32,6 +32,6 @@ public class TrafficLog implements Serializable {
 
     @ManyToOne
     private NetworkNode networkNode;
-    @OneToMany
+    @OneToMany(mappedBy = "trafficLog")
     private ArrayList<DetectionRule> detectionRule = new ArrayList<>();
 }
