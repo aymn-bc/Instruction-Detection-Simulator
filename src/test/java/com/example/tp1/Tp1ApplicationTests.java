@@ -1,10 +1,10 @@
-package com.example.tp1;
+package com.example.Instruction_Detection_Simulator;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class Tp1ApplicationTests {
+class Instruction_Detection_SimulatorApplicationTests {
 
     @Test
     void contextLoads() {

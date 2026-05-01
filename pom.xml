@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.example</groupId>
-    <artifactId>tp1</artifactId>
+    <artifactId>Instruction_Detection_Simulator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>tp1</name>
-    <description>tp1</description>
+    <name>Instruction_Detection_Simulator</name>
+    <description>Instruction_Detection_Simulator</description>
     <url/>
     <licenses>
         <license/>
@@ -97,6 +97,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>com.example.Instruction_Detection_Simulator.Instruction_Detection_SimulatorApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
