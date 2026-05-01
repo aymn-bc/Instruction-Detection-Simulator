@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 @Getter
@@ -16,16 +16,17 @@ import java.util.ArrayList;
 @NoArgsConstructor
 
 @Entity
-public class NetworkNode implements Serializable {
+public class Alert implements Serializable {
     @Id
-    private String ip;
-    private String hostname;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private LocalDateTime detectedAt;
     @Enumerated(EnumType.STRING)
-    private TypeNode type;
+    private ESeverityLevel severity;
+    private String description;
     @Enumerated(EnumType.STRING)
-    private NodeStatus status;
-    private Boolean isBlacklisted;
+    private AlertStatus status;
 
     @OneToMany
-    private ArrayList<TrafficLog> trafficLogs = new ArrayList<>();
+    private ArrayList<DetectionRule> detectionRule = new ArrayList<>();
 }
