@@ -25,10 +25,11 @@ public class TrafficLogServiceImpl implements TrafficLogService {
             .map(existingLog -> {
                 existingLog.setSourceIp(trafficLog.getSourceIp());
                 existingLog.setDestinationIp(trafficLog.getDestinationIp());
-                existingLog.setSourcePort(trafficLog.getSourcePort());
-                existingLog.setDestinationPort(trafficLog.getDestinationPort());
-                existingLog.setProtocol(trafficLog.getProtocol());
                 existingLog.setTimestamp(trafficLog.getTimestamp());
+                existingLog.setPacketSize(trafficLog.getPacketSize());
+                existingLog.setProtocol(trafficLog.getProtocol());
+                existingLog.setRequestCount(trafficLog.getRequestCount());
+                existingLog.setNetworkNode(trafficLog.getNetworkNode());
                 return trafficLogRepository.save(existingLog);
             })
             .orElse(null);

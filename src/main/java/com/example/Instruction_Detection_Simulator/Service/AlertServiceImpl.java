@@ -23,10 +23,10 @@ public class AlertServiceImpl implements AlertService {
     public Alert updateAlert(Alert alert) {
         return alertRepository.findById(alert.getId())
             .map(existingAlert -> {
-                existingAlert.setAlertName(alert.getAlertName());
+                existingAlert.setDetectedAt(alert.getDetectedAt());
                 existingAlert.setDescription(alert.getDescription());
-                existingAlert.setSeverityLevel(alert.getSeverityLevel());
-                existingAlert.setIsActive(alert.getIsActive());
+                existingAlert.setSeverity(alert.getSeverity());
+                existingAlert.setStatus(alert.getStatus());
                 return alertRepository.save(existingAlert);
             })
             .orElse(null);

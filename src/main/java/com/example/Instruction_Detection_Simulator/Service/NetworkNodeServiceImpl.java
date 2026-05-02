@@ -24,8 +24,9 @@ public class NetworkNodeServiceImpl implements NetworkNodeService {
         return networkNodeRepository.findById(networkNode.getIp())
             .map(existingNode -> {
                 existingNode.setHostname(networkNode.getHostname());
-                existingNode.setMacAddress(networkNode.getMacAddress());
-                existingNode.setPort(networkNode.getPort());
+                existingNode.setType(networkNode.getType());
+                existingNode.setStatus(networkNode.getStatus());
+                existingNode.setIsBlacklisted(networkNode.getIsBlacklisted());
                 return networkNodeRepository.save(existingNode);
             })
             .orElse(null);
