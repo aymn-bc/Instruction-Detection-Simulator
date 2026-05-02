@@ -16,21 +16,38 @@ public class DetectionRuleServiceImpl implements DetectionRuleService {
 
     @Override
     public DetectionRule createDetectionRule(DetectionRule detectionRule) {
+        return detectionRuleRepository.save(detectionRule);
     }
 
     @Override
     public DetectionRule updateDetectionRule(DetectionRule detectionRule) {
+        return detectionRuleRepository.findById(detectionRule.getId())
+            .map(existingRule -> {
+                existingRule.setRuleName(detectionRule.getRuleName());
+                existingRule.setDescription(detectionRule.getDescription());
+                existingRule.setRuleType(detectionRule.getRuleType());
+                existingRule.setThresholdValue(detectionRule.getThresholdValue());
+                existingRule.setSeverityLevel(detectionRule.getSeverityLevel());
+                existingRule.setIsActive(detectionRule.getIsActive());
+                existingRule.setTrafficLog(detectionRule.getTrafficLog());
+                existingRule.setAlert(detectionRule.getAlert());
+                return detectionRuleRepository.save(existingRule);
+            })
+            .orElse(null);
     }
 
     @Override
     public void deleteDetectionRule(Long id) {
+        detectionRuleRepository.deleteById(id);
     }
 
     @Override
     public DetectionRule getDetectionRuleById(Long id) {
+        return detectionRuleRepository.findById(id).orElse(null);
     }
 
     @Override
     public List<DetectionRule> getAllDetectionRules() {
+        return detectionRuleRepository.findAll();
     }
 }

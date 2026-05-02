@@ -11,6 +11,7 @@
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/unknown/lombok-unknown.jar" />
         </processorPath>
+        <module name="tp1" />
         <module name="Instruction_Detection_Simulator" />
       </profile>
     </annotationProcessing>
@@ -18,6 +19,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Instruction_Detection_Simulator" options="-parameters" />
+      <module name="tp1" options="-parameters" />
     </option>
   </component>
 </project>

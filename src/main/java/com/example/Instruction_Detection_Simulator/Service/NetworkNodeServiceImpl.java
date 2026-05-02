@@ -16,21 +16,33 @@ public class NetworkNodeServiceImpl implements NetworkNodeService {
 
     @Override
     public NetworkNode createNetworkNode(NetworkNode networkNode) {
+        return networkNodeRepository.save(networkNode);
     }
 
     @Override
     public NetworkNode updateNetworkNode(NetworkNode networkNode) {
+        return networkNodeRepository.findById(networkNode.getIp())
+            .map(existingNode -> {
+                existingNode.setHostname(networkNode.getHostname());
+                existingNode.setMacAddress(networkNode.getMacAddress());
+                existingNode.setPort(networkNode.getPort());
+                return networkNodeRepository.save(existingNode);
+            })
+            .orElse(null);
     }
 
     @Override
     public void deleteNetworkNode(String ip) {
+        networkNodeRepository.deleteById(ip);
     }
 
     @Override
     public NetworkNode getNetworkNodeByIp(String ip) {
+        return networkNodeRepository.findById(ip).orElse(null);
     }
 
     @Override
     public List<NetworkNode> getAllNetworkNodes() {
+        return networkNodeRepository.findAll();
     }
 }
